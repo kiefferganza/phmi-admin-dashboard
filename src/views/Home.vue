@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <b-container>
+    <b-container class="p-5">
       <b-card-group deck>
         <b-card header="Transaction Logs" header-tag="header" header-class="text-left">
           <b-card-text>

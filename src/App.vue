@@ -1,15 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <b-nav>
-        <b-nav-item active>
-          <router-link to="/">Dashboard</router-link>
+    <b-navbar toggleable="lg" type="dark" variant="primary">
+    <b-navbar-brand >Admin Dashboard</b-navbar-brand>
+
+
+    <b-collapse id="nav-collapse" is-nav class="text-white">
+      <b-navbar-nav >
+        <b-nav-item> 
+          <router-link to="/" class="text-white">Dashboard</router-link>
         </b-nav-item>
         <b-nav-item>
-          <router-link to="/about">About</router-link>
+          <router-link to="/backup" class="text-white">Backup</router-link>
         </b-nav-item>
-      </b-nav>
-    </div>
+        <b-nav-item>
+          <router-link to="/about" class="text-white">About</router-link>
+        </b-nav-item>
+    </b-navbar-nav>
+
+      <!-- Right aligned nav items -->
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item-dropdown right>
+          <!-- Using 'button-content' slot -->
+          
+          <b-dropdown-item >Profile</b-dropdown-item>
+          <b-dropdown-item >Sign Out</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+      
+    </b-collapse>
+  </b-navbar>
     <router-view />
   </div>
 </template>
