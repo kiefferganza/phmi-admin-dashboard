@@ -1,11 +1,13 @@
 <template>
   <div class="inventorycutoff">
       <b-container class="p-5">
+        
           <div class="text-left">
               <div class="row p-3">
                   <div class="col">
                       <b-button v-b-modal.addbackup-modal variant="primary">Add Backup</b-button>
                       <!-- <b-button variant="info" @click="loadTableData()">Refresh</b-button> -->
+                      
                   </div>
               </div>
           </div>
