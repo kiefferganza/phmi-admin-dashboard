@@ -32,10 +32,15 @@
  <template #modal-footer="{ cancel }">
 
    <!-- Emulate built in modal footer ok and cancel button actions -->
-   <b-button size="sm" variant="success" @click="insertRecord()">
+   <b-button variant="success" @click="insertRecord()">
      Submit
+     <div v-if="isClicked" :disabled="validated == 1">
+        <b-spinner small type="grow"></b-spinner>
+        <span class="sr-only">Loading...</span>
+     </div>
    </b-button>
-   <b-button size="sm" variant="danger" @click="cancel()">
+
+   <b-button variant="danger" @click="cancel()">
      Cancel
    </b-button>
 
@@ -46,7 +51,7 @@
 </template>
 
 <script>
-// TODO: Insert Backup in database
+// TODO: NOTHING
 import axios from 'axios'
 export default {
   data() {
@@ -55,6 +60,7 @@ export default {
       fields: [],
       selecteddate: '',
       componentKey: 0,
+      isClicked : false,
     }
   },
   mounted() {
@@ -64,6 +70,7 @@ export default {
   },
   methods: {
     addField: function () {
+
       this.fields.push({
         itemID: '',
         quantity: '',
@@ -76,10 +83,12 @@ export default {
       this.fields.splice(index, 1);
     },
     insertRecord: function () {
+      this.isClicked = true,
       axios
         .post('http://localhost:8000/api/cutoff/store', this.fields)
         .then(response => (
           console.log(response.data),
+          this.isClicked = false,
           this.$root.$refs.InventoryCutoff.loadTableData(),
           this.$bvModal.hide("addbackup-modal"),
           this.selecteddate = '',
