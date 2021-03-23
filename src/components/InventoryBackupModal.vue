@@ -25,10 +25,21 @@
           </span>
         </div>
       </div>
-      <div>
-        <!-- {{ fields }}
-        {{ selecteddate }} -->
-      </div>
+      <!-- <div>
+         {{ fields }}
+        {{ selecteddate }} 
+      </div> -->
+ <template #modal-footer="{ cancel }">
+
+   <!-- Emulate built in modal footer ok and cancel button actions -->
+   <b-button size="sm" variant="success" @click="insertRecord()">
+     Submit
+   </b-button>
+   <b-button size="sm" variant="danger" @click="cancel()">
+     Cancel
+   </b-button>
+
+ </template>
     </b-modal>
   </div>
   
@@ -37,33 +48,48 @@
 <script>
 // TODO: Insert Backup in database
 import axios from 'axios'
-  export default {
-    data() {
-      return {
-        items: [],
-        fields: [],
-        selecteddate: '',
-      }
-    },
-    mounted () {
-       axios
+export default {
+  data() {
+    return {
+      items: [],
+      fields: [],
+      selecteddate: '',
+      componentKey: 0,
+    }
+  },
+  mounted() {
+    axios
       .get('http://127.0.0.1:8000/api/cutoff/items')
       .then(response => (this.items = response.data))
+  },
+  methods: {
+    addField: function () {
+      this.fields.push({
+        itemID: '',
+        quantity: '',
+        date: this.selecteddate
+      });
     },
-    methods: {
-      addField: function () {
-        this.fields.push({
-          itemID: '',
-          quantity: '',
-        });
-      },
-      deleteField: function (index) {
+    deleteField: function (index) {
       console.log(index);
       console.log(this.fields);
       this.fields.splice(index, 1);
     },
-    }
+    insertRecord: function () {
+      axios
+        .post('http://localhost:8000/api/cutoff/store', this.fields)
+        .then(response => (
+          console.log(response.data),
+          this.$root.$refs.InventoryCutoff.loadTableData(),
+          this.$bvModal.hide("addbackup-modal"),
+          this.selecteddate = '',
+          this.fields = []
+        ))
+        .catch(error => console.log(error))
+    },
+    
   }
+}
 </script>
 
 
