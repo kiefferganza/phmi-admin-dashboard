@@ -12,7 +12,6 @@
         </b-card>
       </b-card-group>
     </b-container>
-
   </div>
 </template>
 
@@ -24,20 +23,31 @@ export default {
   },
   data () {
       return {
-      logs: [],
       perPage: 10,
       currentPage: 1,
+      logs: [],
     }
   },
   computed: {
     rows() {
       return this.logs.length
+    },
+    getKey() {
+      return this.$store.state.token
     }
   },
-   mounted () {
-    axios
-      .get('http://127.0.0.1:8000/api/logs/index')
-      .then(response => (this.logs = response.data))
-  }
+   mounted() {
+     this.token = this.getKey;
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token
+
+    axios.get('http://127.0.0.1:8000/api/logs/index')
+      .then(response => {
+        console.log(response.data)
+         this.logs = response.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
 };
 </script>

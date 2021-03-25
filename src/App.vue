@@ -7,23 +7,21 @@
     <b-collapse id="nav-collapse" is-nav class="text-white">
       <b-navbar-nav >
         <b-nav-item> 
-          <router-link to="/" class="text-white">Dashboard</router-link>
+          <router-link to="/home" class="text-white">Dashboard</router-link>
         </b-nav-item>
         <b-nav-item>
           <router-link to="/backup" class="text-white">Backup</router-link>
         </b-nav-item>
         <b-nav-item>
-          <router-link to="/about" class="text-white">About</router-link>
+          <router-link v-if="!loggedIn" to="/" class="text-white">Sign In</router-link>
         </b-nav-item>
     </b-navbar-nav>
 
       <!-- Right aligned nav items -->
-      <b-navbar-nav class="ml-auto">
+      <b-navbar-nav class="ml-auto" v-if="loggedIn">
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
-          
-          <b-dropdown-item >Profile</b-dropdown-item>
-          <b-dropdown-item >Sign Out</b-dropdown-item>
+            <b-dropdown-item ><router-link :to="{name: 'Logout'}">Logout</router-link></b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       
@@ -32,6 +30,16 @@
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    loggedIn() {
+      return this.$store.getters.loggedIn;
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {

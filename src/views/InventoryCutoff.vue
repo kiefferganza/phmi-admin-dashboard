@@ -47,6 +47,7 @@ export default {
       perPage: 10,
       currentPage: 1,
       componentKey: 0,
+      Unauthorized : '',
 
     }
   },
