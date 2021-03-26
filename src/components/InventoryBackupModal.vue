@@ -29,7 +29,7 @@
          {{ fields }}
         {{ selecteddate }} 
       </div> -->
- <template #modal-footer="{ cancel }">
+ <template #modal-footer>
 
    <!-- Emulate built in modal footer ok and cancel button actions -->
    <b-button variant="success" @click="insertRecord()">
@@ -40,7 +40,7 @@
      </div>
    </b-button>
 
-   <b-button variant="danger" @click="cancel()">
+   <b-button variant="danger" @click="closeModal()">
      Cancel
    </b-button>
 
@@ -60,10 +60,18 @@ export default {
       fields: [],
       selecteddate: '',
       componentKey: 0,
-      isClicked : false,
+      isClicked: false,
+      token: '',
+    }
+  },
+  computed: {
+    getKey() {
+      return this.$store.state.token
     }
   },
   mounted() {
+    this.token = this.getKey;
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token
     axios
       .get('http://127.0.0.1:8000/api/cutoff/items')
       .then(response => (this.items = response.data))
@@ -84,7 +92,7 @@ export default {
     },
     insertRecord: function () {
       this.isClicked = true,
-      axios
+        axios
         .post('http://localhost:8000/api/cutoff/store', this.fields)
         .then(response => (
           console.log(response.data),
@@ -96,8 +104,13 @@ export default {
         ))
         .catch(error => console.log(error))
     },
-    
-  }
+    closeModal: function () {
+      this.$bvModal.hide("addbackup-modal"),
+        this.selecteddate = '',
+        this.fields = []
+    }
+  },
+
 }
 </script>
 

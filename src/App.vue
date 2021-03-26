@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="primary">
+    <b-navbar toggleable="lg" type="dark" variant="primary" v-if="loggedIn">
     <b-navbar-brand >Admin Dashboard</b-navbar-brand>
 
 
