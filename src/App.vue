@@ -7,6 +7,9 @@
     <b-collapse id="nav-collapse" is-nav class="text-white">
       <b-navbar-nav >
         <b-nav-item> 
+          <router-link to="/dashboard" class="text-white">Dashboard</router-link>
+        </b-nav-item>
+        <b-nav-item> 
           <router-link to="/transactionlogs" class="text-white">Transaction Logs</router-link>
         </b-nav-item>
         <b-nav-item>

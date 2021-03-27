@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Dashboard from "../views/Dashboard";
 import TransactionLogs from "../views/Home";
 import About from "../views/About.vue";
 import InventoryCutoff from "../views/InventoryCutoff.vue";
@@ -22,6 +23,14 @@ const routes = [
     path: '/logout',
     name: 'Logout',
     component: Logout
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    meta: {
+      requiresAuth: true,
+    }
   },
   {
     path: "/transactionlogs",

@@ -60,7 +60,7 @@ export default {
             })
                 .then(response => {
                     this.isClicked = false,
-                    this.$router.push({name: 'TransactionLogs'})
+                    this.$router.push({name: 'Dashboard'})
                 })
                 .catch(error => {
                      this.isClicked = false
