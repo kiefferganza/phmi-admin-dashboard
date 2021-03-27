@@ -6,7 +6,7 @@
                     Current Inventory
                 </div>
                 <div class="card-body">
-                    <DashboardCard />
+                   <h5>Cards Here</h5>
                 </div>
             </div>
         </div>
@@ -14,11 +14,10 @@
 </template>
 
 <script>
-import DashboardCard from '../components/Inventorycard'
 export default {
       name: "Dashboard",
       components: {
-        DashboardCard
+        
       },
 }
 </script>
