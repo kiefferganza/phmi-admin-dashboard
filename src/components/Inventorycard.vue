@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Chart Goes Here!</h1>
+        <h1>Chart Goes HereEEEEEEEEEE!</h1>
     </div>
 </template>
 
