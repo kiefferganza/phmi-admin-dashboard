@@ -1,11 +1,26 @@
 <template>
     <div>
-        <h1>Chart Goes HereEEEEEEEEEE!</h1>
+        <BarChart />
     </div>
 </template>
 
 <script>
+import BarChart from '../components/Charts/BarChart'
+
 export default {
-    name: 'DashboardCard'
+    name: 'DashboardCard',
+    components: {
+        BarChart
+    },
+    data() {
+        return {
+        }
+    },
+    mounted() {
+   
+    },
+    methods: {
+
+    }
 }
 </script>
