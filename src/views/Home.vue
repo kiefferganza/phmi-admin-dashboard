@@ -4,8 +4,10 @@
       <b-card-group deck>
         <b-card header="Transaction Logs" header-tag="header" header-class="text-left">
           <b-card-text>
-            <b-table striped hover :per-page="perPage" :current-page="currentPage" :items="logs" id="my-table">
-            </b-table>
+            <div class="table table-responsive">
+              <b-table striped hover :per-page="perPage" :current-page="currentPage" :items="logs" id="my-table">
+              </b-table>
+            </div>
             <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-controls="my-table">
             </b-pagination>
           </b-card-text>
@@ -18,7 +20,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name: "Home",
+  name: "TransactionLogs",
   components: {
   },
   data () {

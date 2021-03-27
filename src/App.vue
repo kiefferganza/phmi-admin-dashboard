@@ -7,7 +7,7 @@
     <b-collapse id="nav-collapse" is-nav class="text-white">
       <b-navbar-nav >
         <b-nav-item> 
-          <router-link to="/home" class="text-white">Dashboard</router-link>
+          <router-link to="/transactionlogs" class="text-white">Transaction Logs</router-link>
         </b-nav-item>
         <b-nav-item>
           <router-link to="/backup" class="text-white">Backup</router-link>
