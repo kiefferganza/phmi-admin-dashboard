@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import TransactionLogs from "../views/Home";
 import About from "../views/About.vue";
 import InventoryCutoff from "../views/InventoryCutoff.vue";
 import Login from "../views/Login";
@@ -24,9 +24,9 @@ const routes = [
     component: Logout
   },
   {
-    path: "/home",
-    name: "Home",
-    component: Home,
+    path: "/transactionlogs",
+    name: "TransactionLogs",
+    component: TransactionLogs,
     meta: {
       requiresAuth: true,
     }

@@ -15,7 +15,7 @@
                     <input type="password" placeholder="Password" class="form-control" id="password" v-model="password" required>
                     <div >
                         <b-form-invalid-feedback :state="validation">
-                            Your password must be 8 or more characters long.
+                            Your password must be at least 8 characters long.
                         </b-form-invalid-feedback>
                         <b-form-valid-feedback :state="validation">
                             Looks Good.
@@ -60,7 +60,7 @@ export default {
             })
                 .then(response => {
                     this.isClicked = false,
-                    this.$router.push({name: 'Home'})
+                    this.$router.push({name: 'TransactionLogs'})
                 })
                 .catch(error => {
                      this.isClicked = false
