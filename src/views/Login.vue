@@ -28,7 +28,7 @@
                  
                 <button type="submit" class="btn btn-primary" v-if="!isClicked" :disabled="!validation">Sign In</button>
 
-                <b-button variant="primary" type="submit" v-if="isClicked" >
+                <b-button variant="primary" type="submit" v-if="isClicked" disabled>
                     <b-spinner small type="grow"></b-spinner>
                     Loading...
                 </b-button>

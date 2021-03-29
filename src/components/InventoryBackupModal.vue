@@ -6,6 +6,16 @@
           <label for="example-datepicker">Choose a date</label>
           <b-form-datepicker v-model="selecteddate" class="mb-2"></b-form-datepicker>
         </div>
+        <div class="col">
+          <label>Database</label>
+          <select class="form-control"  v-model="selectedCenter">
+            <option 
+            :value="center" 
+            v-for="(center, key) in centers" 
+            :key="key">{{center}}</option>
+
+          </select>
+        </div>
       </div>
       <div class="pb-3">
         <button class="btn btn-primary" @click="addField">Add Item</button>
@@ -25,10 +35,10 @@
           </span>
         </div>
       </div>
-      <!-- <div>
+      <div>
          {{ fields }}
-        {{ selecteddate }} 
-      </div> -->
+        {{ selectedCenter }} 
+      </div>
  <template #modal-footer>
 
    <!-- Emulate built in modal footer ok and cancel button actions -->
@@ -58,18 +68,25 @@ export default {
     return {
       items: [],
       fields: [],
+      centers: [],
       selecteddate: '',
+      selectedCenter: '',
       componentKey: 0,
       isClicked: false,
       token: '',
+      
     }
   },
   computed: {
     getKey() {
       return this.$store.state.token
+    },
+    getCenters() {
+      return this.$store.getters.getCenters
     }
   },
   mounted() {
+    this.centers = this.getCenters;
     this.token = this.getKey;
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token
     axios
