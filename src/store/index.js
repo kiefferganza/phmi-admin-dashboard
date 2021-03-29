@@ -8,10 +8,14 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem('access_token') || null,
     logs: [],
+    centers: ['Davao','Tagum','Digos']
   },
   getters: {
     loggedIn(state) {
       return state.token !== null
+    },
+    getCenters(state) {
+      return state.centers
     },
   },
   mutations: {
@@ -21,6 +25,7 @@ export default new Vuex.Store({
     destroyToken(state) {
       state.token = null
     },
+
   },
   actions: {
     login(context, credentials) {

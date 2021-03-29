@@ -1,8 +1,9 @@
 <template>
     <div class="row">
-        <div class="col" v-for="item in items" :key="item.recId">
-            <div class="card">
-                <div class="card-header bg-primary text-white">{{ item.ItemName }}</div>
+        <div class="col" v-for="(item,key) in items" :key="key">
+            <div class="card shadow-sm">
+                <div 
+                class="card-header text-white" :class="bgClass[key]">{{ item.ItemName }}</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ item.quantity }}</h5>
                     <div v-if="item.diff > 0">
@@ -23,7 +24,7 @@
                             {{ item.diff }} %
                         </h6>
                     </div>
-
+    
                 </div>
             </div>
         </div>
@@ -40,6 +41,8 @@ export default {
         return {
             items: [],
             token: '',
+            bgClass: ['bg-primary','bg-danger','bg-warning','bg-info'],
+
         }
     },
     computed: {
