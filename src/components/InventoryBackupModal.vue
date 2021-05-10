@@ -35,10 +35,10 @@
           </span>
         </div>
       </div>
-      <div>
+      <!-- <div>
          {{ fields }}
         {{ selectedCenter }} 
-      </div>
+      </div> -->
  <template #modal-footer>
 
    <!-- Emulate built in modal footer ok and cancel button actions -->
@@ -99,7 +99,8 @@ export default {
       this.fields.push({
         itemID: '',
         quantity: '',
-        date: this.selecteddate
+        date: this.selecteddate,
+        database: this.selectedCenter
       });
     },
     deleteField: function (index) {
